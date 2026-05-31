@@ -1,0 +1,10 @@
+resource_group_name = "rg-smart-resume"
+location            = "eastus"
+project_name        = "smartresume"
+storage_account_prefix = "smartresume"
+
+tags = {
+  project     = "smart-resume-processing"
+  environment = "demo"
+  managed_by  = "terraform"
+}

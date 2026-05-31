@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.py[cod]
+.Python
+venv/
+.venv/
+
+# Environment
+.env
+.env.local
+*.local.settings.json
+local.settings.json
+
+# Build outputs
+dist/
+build/
+.azure/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+!terraform/terraform.tfvars.example
+.terraform.lock.hcl
+crash.log
+
+# IDE & OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
