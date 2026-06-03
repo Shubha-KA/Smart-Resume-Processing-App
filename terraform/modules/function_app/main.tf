@@ -38,6 +38,15 @@ variable "tags" {
   type = map(string)
 }
 
+variable "document_intelligence_endpoint" {
+  type = string
+}
+
+variable "document_intelligence_api_key" {
+  type      = string
+  sensitive = true
+}
+
 resource "azurerm_service_plan" "this" {
   name                = "${var.function_app_name}-plan"
   resource_group_name = var.resource_group_name
@@ -61,7 +70,7 @@ resource "azurerm_linux_function_app" "this" {
 
   site_config {
     application_stack {
-      python_version = "3.11"
+      node_version = "18"
     }
 
     application_insights_key               = var.application_insights_key
@@ -70,10 +79,12 @@ resource "azurerm_linux_function_app" "this" {
 
   app_settings = {
     AzureWebJobsStorage                   = var.storage_connection_string
-    FUNCTIONS_WORKER_RUNTIME              = "python"
+    FUNCTIONS_WORKER_RUNTIME              = "node"
     AzureWebJobsFeatureFlags              = "EnableWorkerIndexing"
     PROCESSED_CONTAINER                   = "processed"
     APPLICATIONINSIGHTS_CONNECTION_STRING = var.application_insights_connection_string
+    DOCUMENT_INTELLIGENCE_ENDPOINT        = var.document_intelligence_endpoint
+    DOCUMENT_INTELLIGENCE_API_KEY         = var.document_intelligence_api_key
   }
 
   tags = var.tags

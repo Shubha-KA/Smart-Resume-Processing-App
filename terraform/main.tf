@@ -60,5 +60,26 @@ module "function_app" {
   storage_connection_string    = module.storage.primary_connection_string
   application_insights_key     = module.application_insights.instrumentation_key
   application_insights_connection_string = module.application_insights.connection_string
+  document_intelligence_endpoint = module.document_intelligence.endpoint
+  document_intelligence_api_key  = module.document_intelligence.primary_access_key
   tags                         = var.tags
+}
+
+module "app_service" {
+  source = "./modules/app_service"
+
+  resource_group_name       = module.resource_group.name
+  location                  = module.resource_group.location
+  app_service_name          = "${var.project_name}-app-${random_string.suffix.result}"
+  storage_connection_string = module.storage.primary_connection_string
+  tags                      = var.tags
+}
+
+module "document_intelligence" {
+  source = "./modules/document_intelligence"
+
+  name                = "${var.project_name}-di-${random_string.suffix.result}"
+  resource_group_name = module.resource_group.name
+  location            = module.resource_group.location
+  tags                = var.tags
 }

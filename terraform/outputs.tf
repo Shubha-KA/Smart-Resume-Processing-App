@@ -49,3 +49,8 @@ output "function_app_managed_identity_principal_id" {
   description = "Principal ID of the Function App managed identity"
   value       = module.function_app.managed_identity_principal_id
 }
+
+output "app_service_url" {
+  description = "The default hostname of the App Service"
+  value       = module.app_service.app_service_default_hostname
+}
