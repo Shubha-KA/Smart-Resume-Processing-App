@@ -1,0 +1,9 @@
+{
+  "name": "smart-resume-processing-app",
+  "version": "1.0.0",
+  "description": "Root package.json for Azure App Service Deployment Center",
+  "scripts": {
+    "postinstall": "cd backend && npm install",
+    "start": "cd backend && npm start"
+  }
+}
