@@ -46,3 +46,6 @@ metadata.json
 recent_traces.json
 traces.json
 test.pdf
+
+# functions/ is a separate git repo (azure-functions) — do not track here
+functions/
