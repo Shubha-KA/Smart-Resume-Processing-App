@@ -36,3 +36,13 @@ Thumbs.db
 # Logs
 *.log
 npm-debug.log*
+
+# Debug / temp files created by monitoring tools
+exceptions.json
+func-deployments.json
+logs.json
+logs2.json
+metadata.json
+recent_traces.json
+traces.json
+test.pdf

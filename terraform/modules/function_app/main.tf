@@ -38,14 +38,6 @@ variable "tags" {
   type = map(string)
 }
 
-variable "document_intelligence_endpoint" {
-  type = string
-}
-
-variable "document_intelligence_api_key" {
-  type      = string
-  sensitive = true
-}
 
 resource "azurerm_service_plan" "this" {
   name                = "${var.function_app_name}-plan"
@@ -83,8 +75,6 @@ resource "azurerm_linux_function_app" "this" {
     AzureWebJobsFeatureFlags              = "EnableWorkerIndexing"
     PROCESSED_CONTAINER                   = "processed"
     APPLICATIONINSIGHTS_CONNECTION_STRING = var.application_insights_connection_string
-    DOCUMENT_INTELLIGENCE_ENDPOINT        = var.document_intelligence_endpoint
-    DOCUMENT_INTELLIGENCE_API_KEY         = var.document_intelligence_api_key
   }
 
   tags = var.tags
